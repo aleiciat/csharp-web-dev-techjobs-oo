@@ -13,19 +13,22 @@ namespace TechJobsOO
         public CoreCompetency JobCoreCompetency { get; set; }
 
 
-        public Job(int Id)
+        public Job()
         {
-            Id = 2000;
+            Id = nextId;
+            nextId++;
         }
 
-        public Job(string name, object EmployerName, object EmployerLocation, object JobType, object JobCoreCompetency)
+        public Job(string name, Employer employerName, Location employerLocation, PositionType jobType, CoreCompetency jobCoreCompetency) : this()
         {
-/*            Name = name;
+            Job newJob = new Job();
+            Name = name;
             EmployerName = employerName;
             EmployerLocation = employerLocation;
             JobType = jobType;
-            JobCoreCompetency = jobCoreCompetency;*/
+            JobCoreCompetency = jobCoreCompetency;
         }
+
 
         public override bool Equals(object obj)
         {
