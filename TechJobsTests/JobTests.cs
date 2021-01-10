@@ -24,29 +24,31 @@ namespace TechJobsTests
             Assert.IsTrue(sampleJob.JobCoreCompetency.Value.Equals("Persistence"));
         }
 
+
+        //        public Job(string name, Employer employerName, Location employerLocation, PositionType jobType, CoreCompetency jobCoreCompetency) : this()
+
         [TestMethod]
         public void TestJobsForEquality()
         {
-            Job firstJob = new Job();
+            Job firstJob = new Job("testName", new Employer("employerName"), new Location("employerLocation"), new PositionType("jobType"), new CoreCompetency("jobCoreCompetency"));
             string firstName = firstJob.Name;
             string firstEmployerName = firstJob.EmployerName.Value;
             string firstEmployerLocation = firstJob.EmployerLocation.Value;
             string firstJobType = firstJob.JobType.Value;
             string firstJobCoreCompetency = firstJob.JobCoreCompetency.Value;
-            Job secondJob = new Job();
-            string secondName = firstJob.Name;
-            string secondEmployerName = secondJob.EmployerName.Value;
-            string secondEmployerLocation = secondJob.EmployerLocation.Value;
-            string secondJobType = secondJob.EmployerLocation.Value;
-            string secondJobCoreCompetency = secondJob.JobCoreCompetency.Value;
-            Assert.AreEqual(firstJob, secondJob);
+            Assert.AreEqual("testName", firstName);
+            Assert.AreEqual("employerName", firstEmployerName);
+            Assert.AreEqual("employerLocation", firstEmployerLocation);
+            Assert.AreEqual("jobType", firstJobType);
+            Assert.AreEqual("jobCoreCompetency", firstJobCoreCompetency);
         }
-/*
+
         [TestMethod]
         public void JobReturnsBlankLine()
         {
-            Job line = new Job();
-            Assert.IsTrue( );
-        }*/
+            Job thisJob = new Job("testName", new Employer("employerName"), new Location("employerLocation"), new PositionType("jobType"), new CoreCompetency("jobCoreCompetency"));
+            string blankLine = thisJob.EmployerName.ToString();
+            Assert.IsTrue(blankLine.ToString().Contains("_______"));
+        }
     }
 }
