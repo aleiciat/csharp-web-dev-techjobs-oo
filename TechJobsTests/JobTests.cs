@@ -50,5 +50,30 @@ namespace TechJobsTests
             string blankLine = thisJob.EmployerName.ToString();
             Assert.IsTrue(blankLine.ToString().Contains("_______"));
         }
+
+        [TestMethod]
+        public void ContainsLabelDataAndNewLine()
+        {
+            Job thisJob = new Job("testName", new Employer("employerName"), new Location("employerLocation"), new PositionType("jobType"), new CoreCompetency("jobCoreCompetency"));
+            string labelData = thisJob.EmployerName.ToString();
+            //Assert.IsTrue(labelData.ToString().Contains(":"));
+            Assert.IsTrue(labelData.ToString().Contains(thisJob.EmployerName.Value));
+            Assert.IsTrue(labelData.ToString().Contains("\n"));
+        }
+
+        [TestMethod]
+        public void DataNotAvailable()
+        {
+            Job aJob = new Job("testName", new Employer(), new Location("employerLocation"), new PositionType("jobType"), new CoreCompetency("jobCoreCompetency"));
+            string dataAvailablity = aJob.EmployerName.ToString();
+            Assert.IsTrue(dataAvailablity.ToString().Contains("Data not available"));
+        }
+
+        [TestMethod]
+        public void OnlyContainsIdField()
+        {
+            Job emptyJob = new Job("", new Employer(), new Location(), new PositionType(), new CoreCompetency());
+            Assert.IsTrue(emptyJob.ToString().Contains("Oops"));
+        }
     }
 }

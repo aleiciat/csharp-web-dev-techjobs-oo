@@ -5,24 +5,27 @@ namespace TechJobsOO
     {
         public int Id { get; }
         private static int nextId = 1;
-        public string IdLine = "ID: _______";
 
         public string Name { get; set; }
         public Employer EmployerName { get; set; }
         public Location EmployerLocation { get; set; }
         public PositionType JobType { get; set; }
         public CoreCompetency JobCoreCompetency { get; set; }
+        public string Oops { get; set; }
 
 
         public Job()
         {
             Id = nextId;
             nextId++;
+            if (Name == null && EmployerName == null && EmployerLocation == null && JobType == null && JobCoreCompetency == null)
+            {
+                Oops = "OOPS! This job does not seem to exist.";
+            }
         }
 
         public Job(string name, Employer employerName, Location employerLocation, PositionType jobType, CoreCompetency jobCoreCompetency) : this()
         {
-            Job newJob = new Job();
             Name = name;
             EmployerName = employerName;
             EmployerLocation = employerLocation;
