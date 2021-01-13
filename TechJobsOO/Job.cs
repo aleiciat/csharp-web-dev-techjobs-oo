@@ -11,17 +11,11 @@ namespace TechJobsOO
         public Location EmployerLocation { get; set; }
         public PositionType JobType { get; set; }
         public CoreCompetency JobCoreCompetency { get; set; }
-        public string Oops { get; set; }
-
 
         public Job()
         {
             Id = nextId;
             nextId++;
-            if (Name == null && EmployerName == null && EmployerLocation == null && JobType == null && JobCoreCompetency == null)
-            {
-                Oops = "OOPS! This job does not seem to exist.";
-            }
         }
 
         public Job(string name, Employer employerName, Location employerLocation, PositionType jobType, CoreCompetency jobCoreCompetency) : this()
@@ -32,7 +26,6 @@ namespace TechJobsOO
             JobType = jobType;
             JobCoreCompetency = jobCoreCompetency;
         }
-
 
         public override bool Equals(object obj)
         {
@@ -45,8 +38,20 @@ namespace TechJobsOO
             return HashCode.Combine(Id);
         }
 
-        // TODO: Add the two necessary constructors.
+        public override string ToString()
+        {
+            string id = Id.ToString();
+            string employerName = EmployerName.Value;
+            string employerLocation = EmployerLocation.Value;
+            string jobType = JobType.Value;
+            string jobCoreCompetency = JobCoreCompetency.Value;
 
-        // TODO: Generate Equals() and GetHashCode() methods.
+                    return $"ID: {id} \n" +
+                        $"Employer: {employerName} \n" +
+                        $"Location: {employerLocation} \n" +
+                        $"Position Type: {jobType} \n" +
+                        $"Core Competency: {jobCoreCompetency} \n";
+        
+        }
     }
 }

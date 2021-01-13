@@ -24,18 +24,17 @@ namespace TechJobsTests
             Assert.IsTrue(sampleJob.JobCoreCompetency.Value.Equals("Persistence"));
         }
 
-
-        //        public Job(string name, Employer employerName, Location employerLocation, PositionType jobType, CoreCompetency jobCoreCompetency) : this()
+        //public Job(string name, Employer employerName, Location employerLocation, PositionType jobType, CoreCompetency jobCoreCompetency)
 
         [TestMethod]
         public void TestJobsForEquality()
         {
-            Job firstJob = new Job("testName", new Employer("employerName"), new Location("employerLocation"), new PositionType("jobType"), new CoreCompetency("jobCoreCompetency"));
-            string firstName = firstJob.Name;
-            string firstEmployerName = firstJob.EmployerName.Value;
-            string firstEmployerLocation = firstJob.EmployerLocation.Value;
-            string firstJobType = firstJob.JobType.Value;
-            string firstJobCoreCompetency = firstJob.JobCoreCompetency.Value;
+            Job testJob = new Job("testName", new Employer("employerName"), new Location("employerLocation"), new PositionType("jobType"), new CoreCompetency("jobCoreCompetency"));
+            string firstName = testJob.Name;
+            string firstEmployerName = testJob.EmployerName.Value;
+            string firstEmployerLocation = testJob.EmployerLocation.Value;
+            string firstJobType = testJob.JobType.Value;
+            string firstJobCoreCompetency = testJob.JobCoreCompetency.Value;
             Assert.AreEqual("testName", firstName);
             Assert.AreEqual("employerName", firstEmployerName);
             Assert.AreEqual("employerLocation", firstEmployerLocation);
@@ -46,7 +45,7 @@ namespace TechJobsTests
         [TestMethod]
         public void JobReturnsBlankLine()
         {
-            Job thisJob = new Job("testName", new Employer("employerName"), new Location("employerLocation"), new PositionType("jobType"), new CoreCompetency("jobCoreCompetency"));
+            Job thisJob = new Job("testName", new Employer(""), new Location("employerLocation"), new PositionType("jobType"), new CoreCompetency("jobCoreCompetency"));
             string blankLine = thisJob.EmployerName.ToString();
             Assert.IsTrue(blankLine.ToString().Contains("_______"));
         }
@@ -56,24 +55,24 @@ namespace TechJobsTests
         {
             Job thisJob = new Job("testName", new Employer("employerName"), new Location("employerLocation"), new PositionType("jobType"), new CoreCompetency("jobCoreCompetency"));
             string labelData = thisJob.EmployerName.ToString();
-            //Assert.IsTrue(labelData.ToString().Contains(":"));
+            Assert.IsTrue(labelData.ToString().Contains(":"));
             Assert.IsTrue(labelData.ToString().Contains(thisJob.EmployerName.Value));
-            Assert.IsTrue(labelData.ToString().Contains("\n"));
+            Assert.IsTrue(labelData.ToString().Contains("\n")); 
         }
 
         [TestMethod]
         public void DataNotAvailable()
         {
-            Job aJob = new Job("testName", new Employer(), new Location("employerLocation"), new PositionType("jobType"), new CoreCompetency("jobCoreCompetency"));
+            Job aJob = new Job(" ", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
             string dataAvailablity = aJob.EmployerName.ToString();
             Assert.IsTrue(dataAvailablity.ToString().Contains("Data not available"));
         }
 
-        [TestMethod]
+/*        [TestMethod]
         public void OnlyContainsIdField()
         {
             Job emptyJob = new Job("", new Employer(), new Location(), new PositionType(), new CoreCompetency());
             Assert.IsTrue(emptyJob.ToString().Contains("Oops"));
-        }
+        }*/
     }
 }
