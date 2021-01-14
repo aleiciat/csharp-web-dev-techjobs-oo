@@ -9,14 +9,14 @@ namespace TechJobsOO
 
         }
 
-
+/*
         public override bool Equals(object obj)
         {
             return obj is CoreCompetency competency &&
                    Id == competency.Id;
         }
 
-/*        public override string ToString()
+        public override string ToString()
         {
             if (Value == "" || Value == " " || Value == null)
             {

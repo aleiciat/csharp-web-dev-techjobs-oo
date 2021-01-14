@@ -40,18 +40,42 @@ namespace TechJobsOO
 
         public override string ToString()
         {
-            string id = Id.ToString();
-            string employerName = EmployerName.Value;
-            string employerLocation = EmployerLocation.Value;
-            string jobType = JobType.Value;
-            string jobCoreCompetency = JobCoreCompetency.Value;
+            /*            string id = Id.ToString();
+                        string employerName = EmployerName.Value;
+                        string employerLocation = EmployerLocation.Value;
+                        string jobType = JobType.Value;
+                        string jobCoreCompetency = JobCoreCompetency.Value;*/
+            /*
+                                return $"\n ID : {Id} \n " +
+                                    $"Name : {Name} \n " +
+                                    $"Employer : {EmployerName} \n " +
+                                    $"Location : {EmployerLocation} \n " +
+                                    $"Position Type : {JobType} \n " +
+                                    $"Core Competency : {JobCoreCompetency} \n ";
+                    */
+           if (Name == "")
+            {
+                Name = "Data not available";
+            }
+            if (EmployerName.Value == "")
+            {
+                EmployerName.Value = "Data not available";
+            }
+            if (EmployerLocation.Value == "")
+            {
+                EmployerLocation.Value = "Data not available";
+            }
+            if (JobType.Value == "")
+            {
+                JobType.Value = "Data not available";
+            }
+            if (JobCoreCompetency.Value == "")
+            {
+                JobCoreCompetency.Value = "Data not available";
+            }
 
-                    return $"ID: {id} \n" +
-                        $"Employer: {employerName} \n" +
-                        $"Location: {employerLocation} \n" +
-                        $"Position Type: {jobType} \n" +
-                        $"Core Competency: {jobCoreCompetency} \n";
-        
+            string labelData = $"\n ID : {Id} \n Name : {Name} \n Employer : {EmployerName.Value} \n Location : {EmployerLocation.Value} \n Position Type : {JobType.Value} \n Core Competency : {JobCoreCompetency.Value} \n";
+            return labelData;        
         }
     }
 }

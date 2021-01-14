@@ -9,12 +9,12 @@ namespace TechJobsOO
 
         }
 
-        public override bool Equals(object obj)
+       /* public override bool Equals(object obj)
         {
             return obj is Employer employer &&
                    Id == employer.Id;
         }
-/*
+
         public override string ToString()
         {
             if (Value == "" || Value == " " || Value == null)
